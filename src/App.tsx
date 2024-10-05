@@ -4,6 +4,8 @@ import ScoreBoard from './components/ScoreBoard'
 import { GameProvider } from './context/GameContext'
 import TimerSelector from './components/TimerSelector'
 import HighScore from './components/HighScore'
+import AdComponent from './components/AdComponent.tsx'
+
 
 interface HighScores {
   [key: number]: number;
@@ -30,6 +32,7 @@ function App() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-purple-600 to-indigo-900 flex flex-col items-center justify-center text-white p-4">
       <h1 className="text-4xl font-bold mb-8">Color Cascade</h1>
+      <AdComponent />
       {!gameStarted ? (
         <div className="flex flex-col items-center">
           <TimerSelector selectedTime={selectedTime} setSelectedTime={setSelectedTime} />
