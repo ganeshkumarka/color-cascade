@@ -18,7 +18,7 @@ const colors: Color[] = ['red', 'blue', 'green', 'yellow']
 
 const gameReducer = (state: GameState, action: GameAction): GameState => {
   switch (action.type) {
-    case 'TICK':
+    case 'TICK': {
       const tickedBoard = state.board.map((row, y) => {
         if (y === 0) {
           return row.map(() => colors[Math.floor(Math.random() * colors.length)])
@@ -26,7 +26,8 @@ const gameReducer = (state: GameState, action: GameAction): GameState => {
         return [...state.board[y - 1]]
       })
       return { ...state, board: tickedBoard }
-    case 'CLICK_BLOCK':
+    }
+    case 'CLICK_BLOCK': {
       const { x, y } = action.payload
       const clickedColor = state.board[y][x]
       if (!clickedColor) return state
@@ -57,8 +58,10 @@ const gameReducer = (state: GameState, action: GameAction): GameState => {
         score: newScore,
         level: newLevel,
       }
-    case 'DECREASE_TIME':
+    }
+    case 'DECREASE_TIME': {
       return { ...state, timeRemaining: Math.max(0, state.timeRemaining - 1) }
+    }
     default:
       return state
   }
